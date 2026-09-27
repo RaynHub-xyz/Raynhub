@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RaynHub — Roblox Script Hub</title>
+  <meta name="description" content="RaynHub — dark minimal script hub landing page.">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+:root{--bg:#050506;--panel:#111216;--panel2:#17181d;--line:#292a30;--text:#f4f4f6;--muted:#8d8e98;--green:#43e6a1}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% 0,#11131a 0,#050506 35%);color:var(--text);font-family:Inter,system-ui,sans-serif}
+a{color:inherit;text-decoration:none}.nav{position:sticky;top:0;z-index:20;height:74px;border-bottom:1px solid #17181d;background:rgba(5,5,6,.86);backdrop-filter:blur(18px);display:flex;align-items:center;padding:0 5%;gap:34px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.02em}.logo{width:39px;height:39px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:24px;background:linear-gradient(145deg,#333640,#08090b);border:1px solid #40434c;box-shadow:inset 0 0 15px #000,0 0 25px #000;color:#ddd}
+.nav nav{display:flex;gap:25px;margin-right:auto}.nav nav a{font-size:14px;color:#a6a7b0}.nav nav a:hover{color:#fff}.nav-actions{display:flex;gap:8px}.btn{padding:10px 15px;border-radius:10px;border:1px solid var(--line);font-size:13px;font-weight:600}.btn.ghost{background:#111218;color:#ddd}.btn.light{background:#f2f2f5;color:#08080a;border-color:#f2f2f5}
+.hero{max-width:980px;margin:auto;text-align:center;padding:92px 20px 80px}.status-pill{display:inline-flex;gap:10px;align-items:center;padding:14px 22px;border:1px solid #26272e;background:#111217;border-radius:50px;color:#a5a6af;font:13px 'Space Mono',monospace}.dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 13px var(--green)}
+h1{font-size:clamp(44px,8vw,78px);line-height:1.02;letter-spacing:-.055em;margin:38px 0 22px}h1 span{color:#8e909a}.hero-copy,.section-copy{max-width:650px;margin:0 auto;color:#92939d;line-height:1.75;font-size:16px}
+.loader-card{max-width:720px;margin:42px auto 0;padding:14px;border:1px solid #282a31;border-radius:18px;background:#111217;box-shadow:0 20px 60px #000}.loader-top{display:flex;align-items:center;gap:15px;text-align:left;padding:4px 4px 15px;overflow:hidden}.tag,.version,.game-name{background:#181a20;border:1px solid #22242c;border-radius:7px;padding:8px 11px;color:#92949e;font:12px 'Space Mono',monospace;white-space:nowrap}.loader-top code{color:#c8c9cf;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.copy-btn{width:100%;padding:16px;border:0;border-radius:12px;background:#f0f0f4;color:#09090b;font-size:16px;font-weight:700;cursor:pointer}.copy-btn:hover{background:#fff;transform:translateY(-1px)}
+.hero-art{height:250px;margin:50px auto 0;max-width:900px;position:relative;overflow:hidden;border:1px solid #24252b;border-radius:20px;background:linear-gradient(135deg,#17181c,#070708)}.glow{position:absolute;width:400px;height:200px;background:#555;filter:blur(100px);opacity:.14;left:30%;top:15%}.art-logo{position:absolute;inset:0;display:grid;place-items:center;font-size:100px;font-weight:800;letter-spacing:.08em;color:#ddd;text-shadow:0 0 30px #777}.art-grid{position:absolute;inset:0;background-image:linear-gradient(#fff1 1px,transparent 1px),linear-gradient(90deg,#fff1 1px,transparent 1px);background-size:40px 40px;opacity:.06}
+.section{max-width:900px;margin:auto;padding:100px 24px}.eyebrow{font:12px 'Space Mono',monospace;letter-spacing:.25em;color:#777984;text-align:center}.section h2{text-align:center;font-size:clamp(42px,7vw,70px);line-height:1.05;letter-spacing:-.05em;margin:25px 0 20px}.game-card{margin-top:55px;padding:38px;border:1px solid #303139;border-radius:20px;background:linear-gradient(145deg,#121318,#0d0e11)}.card-head{display:flex;justify-content:space-between;align-items:center}.green-badge{font:13px 'Space Mono',monospace;color:var(--green);border:1px solid #263a33;padding:9px 13px;border-radius:8px}.game-card h3{font-size:30px;margin:28px 0 10px}.game-card p{color:#9798a2;line-height:1.7}.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}.chips span{font:12px 'Space Mono',monospace;color:#999ba5;background:#191a20;padding:9px 12px;border-radius:7px;border:1px solid #202129}
+.dashboard{padding-top:40px}.preview{border:1px solid #2d2f37;border-radius:20px;background:#0e0f13;overflow:hidden;box-shadow:0 25px 70px #000}.preview-nav{display:flex;align-items:center;gap:10px;padding:15px;border-bottom:1px solid #22242a}.small .logo{width:32px;height:32px;font-size:18px}.preview-nav .game-name{margin-left:auto}.fps{color:var(--green);font:13px 'Space Mono',monospace}.preview-body{padding:35px}.preview-body h3{font-size:24px;margin:0 0 8px}.preview-body p{color:#858791}.control{margin-top:12px;background:#17181e;border-radius:12px;padding:18px;display:flex;justify-content:space-between;align-items:center}.control small{display:block;color:#70717b;margin-top:5px}.toggle{width:47px;height:26px;border-radius:20px;background:#383a42;position:relative}.toggle:after{content:'';width:20px;height:20px;background:#ddd;border-radius:50%;position:absolute;top:3px;left:4px}.toggle.on{background:#dfe1e6}.toggle.on:after{left:23px;background:#15161a}.preview-foot{display:flex;justify-content:space-between;padding:17px 25px;border-top:1px solid #22242a;color:#737580;font:12px 'Space Mono',monospace}
+.changelog .change{display:flex;gap:25px;padding:22px 0;border-bottom:1px solid #202127}.change>span{font:12px 'Space Mono',monospace;color:var(--green);min-width:55px}.change b{font-size:16px}.change p{margin:7px 0 0;color:#80818b}
+footer{border-top:1px solid #17181c;max-width:1100px;margin:auto;padding:50px 5%;display:flex;align-items:center;gap:20px;color:#6e707a}footer p{font-size:13px;line-height:1.6}
+#toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);background:#eee;color:#08080a;padding:12px 18px;border-radius:10px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:50}#toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:760px){.nav{height:auto;padding:12px 16px;flex-wrap:wrap;gap:12px}.nav nav{order:3;width:100%;overflow:auto;padding-bottom:3px}.nav-actions .btn.ghost:first-child{display:none}.hero{padding-top:60px}.status-pill{flex-wrap:wrap;justify-content:center}.hero-art{height:190px}.art-logo{font-size:65px}.game-card{padding:25px}.preview-nav{flex-wrap:wrap}.preview-nav .game-name{margin-left:0}.section{padding:70px 18px}footer{padding:35px 20px}}
+
+</style>
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#home">
+      <span class="logo">R</span>
+      <span>RAYNHUB</span>
+    </a>
+    <nav>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#script">Script</a>
+      <a href="#games">Games</a>
+      <a href="#changelog">Changelog</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="btn ghost" onclick="showToast('Login belum dikonfigurasi.')">Login</button>
+      <a class="btn ghost" href="#script">Get Script</a>
+      <a class="btn light" href="#script">Launch Script</a>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="status-pill">
+        <span class="dot"></span>
+        <b>RaynHub Online</b>
+        <span>•</span><span>Keyless Core</span>
+        <span>•</span><span>Multi-Game Support</span>
+      </div>
+
+      <h1>The Premier Roblox<br>Script Hub.<br><span>Built for Rayn.</span></h1>
+      <p class="hero-copy">
+        RaynHub delivers a clean, lightweight hub experience with fast updates,
+        a dark interface, and mobile-friendly controls.
+      </p>
+
+      <div class="loader-card" id="script">
+        <div class="loader-top">
+          <span class="tag">LOADER</span>
+          <code id="loaderText">-- Paste your RaynHub loader here</code>
+        </div>
+        <button class="copy-btn" onclick="copyLoader()">
+          <span>▣</span> Copy Script
+        </button>
+      </div>
+
+      <div class="hero-art">
+        <div class="glow"></div>
+        <div class="art-logo">RAYN</div>
+        <div class="art-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="games">
+      <div class="eyebrow">SUPPORTED GAMES</div>
+      <h2>Optimized Game<br>Modules</h2>
+      <p class="section-copy">Organized modules for the experiences you play most.</p>
+
+      <div class="game-card">
+        <div class="card-head">
+          <span class="tag">FLAGSHIP</span>
+          <span class="green-badge">Rayn Module</span>
+        </div>
+        <h3>Steal An Egg</h3>
+        <p>RaynHub module interface with configurable automation, filters and visual tools.</p>
+        <div class="chips">
+          <span>Auto Steal</span><span>Egg Filter</span><span>Plot Return</span><span>ESP</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dashboard" id="dashboard">
+      <div class="preview">
+        <div class="preview-nav">
+          <div class="brand small"><span class="logo">R</span><span>RAYN HUB</span></div>
+          <span class="version">v1.0</span>
+          <span class="game-name">Steal An Egg</span>
+          <span class="fps">60 FPS</span>
+        </div>
+        <div class="preview-body">
+          <h3>Automated Egg Tools</h3>
+          <p>Clean controls with a mobile-first layout.</p>
+          <div class="control"><div><b>Auto Steal</b><small>Automation toggle</small></div><span class="toggle on"></span></div>
+          <div class="control"><div><b>Glide Speed</b><small>Adjustable movement value</small></div><strong>250</strong></div>
+          <div class="control"><div><b>Safe Return</b><small>Return option</small></div><span class="toggle"></span></div>
+        </div>
+        <div class="preview-foot"><span>raynhub</span><span>RaynHub • Active</span></div>
+      </div>
+    </section>
+
+    <section class="section changelog" id="changelog">
+      <div class="eyebrow">LATEST</div>
+      <h2>Changelog</h2>
+      <div class="change"><span>v1.0</span><div><b>RaynHub Launch</b><p>New dark UI, responsive layout and script section.</p></div></div>
+      <div class="change"><span>Next</span><div><b>More modules</b><p>Game modules and UI improvements can be added here.</p></div></div>
+    </section>
+  </main>
+
+  <footer>
+    <span class="logo">R</span>
+    <p>© 2026 RaynHub (raynhub.xyz). The premier keyless Roblox script hub.</p>
+  </footer>
+
+  <div id="toast"></div>
+  <script>
+const loader = `-- RaynHub loader
+-- Replace this text with your own script URL/loader.`;
+
+document.getElementById("loaderText").textContent = loader.replace(/\n/g, " ");
+
+async function copyLoader(){
+  try{
+    await navigator.clipboard.writeText(loader);
+    showToast("Script berhasil disalin.");
+  }catch(e){
+    showToast("Clipboard tidak tersedia di browser ini.");
+  }
+}
+function showToast(msg){
+  const t=document.getElementById("toast");
+  t.textContent=msg;t.classList.add("show");
+  setTimeout(()=>t.classList.remove("show"),1800);
+}
+
+</script>
+</body>
+</html>
